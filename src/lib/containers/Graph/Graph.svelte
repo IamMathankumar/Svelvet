@@ -421,6 +421,7 @@
 		// Apply transforms
 		scale.set(newScale);
 		translation.set(newTranslation);
+		e.preventDefault();
 	}
 
 	function handleArrowKey(key: Arrow, e: KeyboardEvent) {
@@ -479,7 +480,7 @@
 	{title}
 	style:width={width ? width + 'px' : '100%'}
 	style:height={height ? height + 'px' : '100%'}
-	on:wheel|preventDefault={handleScroll}
+	on:wheel={handleScroll}
 	on:mousedown|preventDefault|self={onMouseDown}
 	on:touchend|preventDefault={onTouchEnd}
 	on:touchstart|preventDefault|self={onTouchStart}
