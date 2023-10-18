@@ -34,7 +34,12 @@
 	export let editing: Graph['editing'];
 	export let dimensionsProvided = false;
 	export let title: string;
-
+	/**
+	 * @default true
+	 * @type boolean
+	 * @description in onclick some elements are lost focus for example select element onChange click not working because Node component handles all touch events so we should disable it for select or checkbox kind of components,
+	 */
+	 export let focusDefaultBehaiour:boolean = true
 	// Local stores
 	const anchorsMounted = writable(0);
 	const nodeConnectEvent = writable<null | MouseEvent>(null);
@@ -134,6 +139,7 @@
 		// Capture the initial click position
 		$initialClickPosition = get(cursor);
 
+		if (focusDefaultBehaiour)
 		$graphDOMElement.focus();
 
 		// If the node is Node is not currently on top, bring it to the front

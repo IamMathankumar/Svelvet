@@ -44,6 +44,12 @@
 	export let resizable = false;
 	export let label = '';
 	/**
+	 * @default true
+	 * @type boolean
+	 * @description in onclick some elements are lost focus for example select element onChange click not working because Node component handles all touch events so we should disable it for select or checkbox kind of components,
+	 */
+	export let focusDefaultBehaiour:boolean = true
+	/**
 	 * @default 1
 	 * @type number
 	 * @description The number of input anchors on a default Nodes. This value features two way binding,
@@ -265,6 +271,7 @@
 
 {#if node && $nodes.get(node.id)}
 	<InternalNode
+		bind:focusDefaultBehaiour
 		{node}
 		center={center || drop === 'center'}
 		{isDefault}
