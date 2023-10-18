@@ -92,6 +92,7 @@
 	 * @description Prevents the graph scale/zoom from changing.
 	 */
 	export let fixedZoom = false;
+	
 
 	const dispatch = createEventDispatcher<{
 		connection: SvelvetConnectionEvent;
@@ -173,7 +174,7 @@
 		{minimap}
 		{graph}
 		{fitView}
-		{fixedZoom}
+		bind:fixedZoom
 		{theme}
 		{drawer}
 		{controls}
