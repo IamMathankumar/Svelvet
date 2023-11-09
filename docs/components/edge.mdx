@@ -29,7 +29,8 @@ Edges also accept callback functions that run in response to click events on the
 
 <Edge let:path let:destroy edgeClick="{() => alert('Edge clicked')}" step>
 	<path d={path} />
-	<button on:click={destroy} slot="label">
+	<-- Note that let:destroy must be specified on the component placed in the named slot, not on the parent-->
+	<button on:click={destroy} let:destroy slot="label">
 		<p>Custom Label</p>
 	</button>
 </Edge>

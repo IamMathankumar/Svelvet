@@ -1,6 +1,6 @@
 {
   "name": "svelvetfork",
-  "version": "8.1.4",
+  "version": "8.1.5",
   "description": "A lightweight Svelte component library for building dynamic, node-based user interfaces",
   "keywords": [
     "svelte",
@@ -33,9 +33,9 @@
   ],
   "devDependencies": {
     "@playwright/test": "^1.28.1",
-    "@sveltejs/adapter-auto": "^2.1.0",
-    "@sveltejs/kit": "^1.20.4",
-    "@sveltejs/package": "^2.1.0",
+    "@sveltejs/adapter-auto": "^2.1.1",
+    "@sveltejs/kit": "^1.27.3",
+    "@sveltejs/package": "^2.2.2",
     "@testing-library/svelte": "^4.0.2",
     "@typescript-eslint/eslint-plugin": "^5.60.0",
     "@typescript-eslint/parser": "^5.60.0",
@@ -60,9 +60,6 @@
   "directories": {
     "doc": "docs",
     "test": "tests"
-  },
-  "peerDependencies": {
-    "svelte": ">=3.59.2 || ^4.0.0"
   },
   "dependencies": {
     "abab": "^2.0.6",
@@ -321,7 +318,7 @@
     "strip-json-comments": "^3.1.1",
     "strip-literal": "^1.0.1",
     "supports-color": "^7.2.0",
-    "svelte": ">=3.59.2 || ^4.0.0",
+    "svelte": "^4.2.2",
     "svelte-eslint-parser": "^0.32.0",
     "svelte-hmr": "^0.15.2",
     "svelte-preprocess": "^5.0.4",
