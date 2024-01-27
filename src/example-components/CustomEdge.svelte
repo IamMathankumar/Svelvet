@@ -1,27 +1,33 @@
 <script lang="ts">
-	import Edge from '$lib/components/Edge/Edge.svelte';
-	import type { CSSColorString } from '$lib/types';
-
-	let color: CSSColorString = 'yellow';
-	let edge: Edge;
+	import Edge from "$lib/components/Edge/Edge.svelte";
+    import EdgeButtons from "./EdgeButtons.svelte";
+    import EdgeComponent from "./EdgeComponent.svelte";
+	import { onDestroy } from "svelte";
+	
+	let mouseOver = false;
+	let editable = false
+	let path:string
+	let edgehovering:any
+	let hovering:any
+	let edge:any
 </script>
 
-<Edge
-	{color}
+<Edge 
 	bind:this={edge}
-	width={4}
-	edgeClick={() => edge.destroy()}
-	labelPosition={0.8}
-	animate
+	let:path
+	enableHover={true}
+	let:hovering
+	step
 >
-	<button id="destroy-edge" on:click={edge.destroy} slot="label">Custom Label</button>
+	{#if path && !path.includes("NaN")}
+	<EdgeComponent on:edgeHovering={e=> edgehovering = e.detail} hovering={hovering} {path} />
+	{/if}
+	<div slot="label"  >
+		
+		
+		<EdgeButtons  hovering={edgehovering} destroy={edge?.destroy} bind:mouseOver/>
+		
+	
+	</div>
+	
 </Edge>
-
-<style>
-	#destroy-edge {
-		background-color: #fff;
-		border: none;
-		border-radius: 5px;
-		padding: 5px;
-	}
-</style>

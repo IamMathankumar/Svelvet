@@ -30,12 +30,14 @@
 	bgColor="white"
 	id="editor"
 >
+{#if false}
 	<div use:grabHandle class="editor">
 		<button on:click={() => graph.editing.set(null)}>X</button>
 		<Slider parameterStore={editing.dimensions.width} max={1000} />
 		<TextField placeholder={'Node Label'} />
 		<button on:click={deleteNode}>Delete Node</button>
 	</div>
+	{/if}
 </Node>
 
 <style>

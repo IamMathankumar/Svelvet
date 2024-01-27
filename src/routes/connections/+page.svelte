@@ -1,6 +1,5 @@
 <script lang="ts">
 	import { Svelvet, Minimap, Node, Anchor } from '$lib';
-	import CustomEdge from '../../example-components/CustomEdge.svelte';
 	function getPosition() {
 		return {
 			x: Math.random() * 1000,

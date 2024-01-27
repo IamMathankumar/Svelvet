@@ -37,6 +37,9 @@
 	export let label = '';
 	export let enableHover = false;
 	export let edgeClick: null | (() => void) = null;
+	// Reactive variables
+	let path: string;
+	let hovering = false;
 	/**
 	 * @default 0.5
 	 * @type number
@@ -51,6 +54,19 @@
 	export let textColor: CSSColorString | null = null;
 	export let cornerRadius = 8;
 	export let targetColor: CSSColorString | null = null;
+	export function destroy() {
+		if (source.id === null || target.id === null) return;
+		const edgeKey = edgeStore.match(source, target);
+		edgeStore.delete(edgeKey[0]);
+		source?.connected.update((connected) => {
+			if (target) connected.delete(target);
+			return connected;
+		});
+		target?.connected.update((connected) => {
+			if (source) connected.delete(source);
+			return connected;
+		});
+	}
 
 	// External stores
 	const source = edge.source;
@@ -70,15 +86,13 @@
 	const edgeType = edge.type;
 	const edgeKey = edge.id;
 
-	// Reactive variables
-	let path: string;
 	let DOMPath: SVGPathElement; // The SVG path element used for calculating the midpoint of the curve for labels
 	let labelPoint = { x: 0, y: 0 };
 	let tracking = false; // Boolean that stops/starts tracking the path midpoint
 	let prefersVertical = false;
 	let sourceAbove = false;
 	let sourceLeft = false;
-	let hovering = false;
+
 	let edgeElement: SVGElement;
 
 	// Reactive declarations
@@ -212,20 +226,6 @@
 		animationFrameId = requestAnimationFrame(trackPath);
 	}
 
-	export function destroy() {
-		if (source.id === null || target.id === null) return;
-		const edgeKey = edgeStore.match(source, target);
-		edgeStore.delete(edgeKey[0]);
-		source?.connected.update((connected) => {
-			if (target) connected.delete(target);
-			return connected;
-		});
-		target?.connected.update((connected) => {
-			if (source) connected.delete(source);
-			return connected;
-		});
-	}
-
 	$: if (step && edgeKey !== 'cursor' && !($edgeType && $edgeType === 'bezier')) {
 		const sourceObject = {
 			x: sourceX,
@@ -316,7 +316,7 @@
 			on:mouseleave={() => (hovering = false)}
 			bind:this={DOMPath}
 		/>
-		<slot {path} {destroy} {hovering}>
+		<slot {path} {hovering}>
 			<path
 				id={edgeKey}
 				class="edge"
