@@ -68,7 +68,8 @@
 
 <Node zIndex={Infinity} position={editorPosition} bgColor="white" id="editor">
 	<!-- svelte-ignore a11y-no-static-element-interactions -->
-
+<!-- Context menu not appearing properly and fopr now it's not needed Sat 27 Jan 5.26 PM Mathankumar K -->
+	{#if false}
 	<div on:contextmenu={handleContextMenu} class="editor">
 		<span style="color:white; font-size:45px">Editor</span>
 		<button on:click={() => graph.editing.set(null)} style="position:absolute; top:10px;right:10px;"
@@ -79,7 +80,7 @@
 		<button on:click={deleteNode}>Delete Node</button>
 		<button on:click={resizeNode}>Resize Node</button>
 	</div>
-	
+	{/if}
 </Node>
 
 <style>

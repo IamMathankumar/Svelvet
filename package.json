@@ -1,21 +1,21 @@
 {
-	"name": "svelvet",
-	"version": "9.0.0",
+	"name": "svelvetfork",
+	"version": "9.0.1",
 	"description": "A lightweight Svelte component library for building dynamic, node-based user interfaces",
 	"keywords": [
 		"svelte",
 		"svelvet",
 		"typescript"
 	],
-	"authors": "Aaron, Abhi, Alexander, Ali, Andrew, Anu, Brian, Britta, Christopher, Damian, David, Dillon, Emma, Ernesto, Henry, Horacio, Ian, Jeffrey, Jen, Jeremy, John, Johnny, Justin, Mauricio, Michael, Rachel, Rathna, Ruxin, Ryan, Sam, Samee, Spencer, Taylor, Thomas, Timmy, Tony, Von, Walter, Wesley",
+	"author": "Mathankumar K",
 	"license": "MIT",
 	"bugs": {
-		"url": "https://github.com/open-source-labs/Svelvet/issues"
+		"url": "https://github.com/IamMathankumar/Svelvet/issues"
 	},
-	"homepage": "https://github.com/open-source-labs/Svelvet",
+	"homepage": "https://github.com/IamMathankumar/Svelvet",
 	"repository": {
 		"type": "git",
-		"url": "git+https://github.com/open-source-labs/Svelvet.git"
+		"url": "git+https://github.com/IamMathankumar/Svelvet.git"
 	},
 	"scripts": {
 		"dev": "vite dev",
