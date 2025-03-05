@@ -1,6 +1,6 @@
 <script context="module" lang="ts">
 	import { calculateStepPath, calculateRadius, calculatePath } from '$lib/utils/calculators';
-	import { onMount, onDestroy, getContext, afterUpdate } from 'svelte';
+	import { onMount, onDestroy, getContext, afterUpdate, createEventDispatcher } from 'svelte';
 	import { directionVectors, stepBuffer } from '$lib/constants';
 	import { buildPath, rotateVector } from '$lib/utils/helpers';
 	import { buildArcStringKey, constructArcString } from '$lib/utils/helpers';
@@ -71,6 +71,8 @@
 		});
 	}
 
+	
+
 	// External stores
 	const source = edge.source;
 	const target = edge.target;
@@ -97,7 +99,7 @@
 	let sourceLeft = false;
 
 	let edgeElement: SVGElement;
-
+	$: colorUpdate($edgeColor)
 	// Reactive declarations
 	$: dynamic = $sourceDynamic || $targetDynamic;
 	$: edgeColor = source?.edgeColor || target?.edgeColor || null;
@@ -198,6 +200,11 @@
 		if ($sourceDynamic) $sourceDirection = newSourceDirection;
 		if ($targetDynamic) $targetDirection = newTargetDirection;
 	}
+
+	const dispatch = createEventDispatcher()
+	const colorUpdate = (color: any) => {
+		dispatch("color", color)
+}
 	edge.rendered.set(true);
 	// Lifecycle methods
 	onMount(() => {
